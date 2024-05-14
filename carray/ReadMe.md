@@ -3,7 +3,7 @@
 1. Generate header files for the native code. This will generate a C/C++ header file which contains methods corresponding to the native calls from the java class.
 
     ```
-    javac -h . HelloJNI.java
+    javac -h . CArray.java
     ```
 
 2. Compile shared object / dynamic library
@@ -13,19 +13,19 @@
     **Linux**
 
     ```
-    g++ -c -fPIC -I"${JAVA_HOME}/include" -I"${JAVA_HOME}/include/linux" HelloJNI.c -o HelloWorldJNI.o
+    g++ -c -fPIC -I"${JAVA_HOME}/include" -I"${JAVA_HOME}/include/linux" carray_CArray.cpp -o CArray.o
     ```
 
     **Windows**
 
     ```
-    g++ -c -I%JAVA_HOME%\include -I%JAVA_HOME%\include\win32 HelloJNI.c -o HelloJNI.o
+    g++ -c -I%JAVA_HOME%\include -I%JAVA_HOME%\include\win32 carray_CArray.cpp -o CArray.o
     ```
 
     **MacOS**
 
     ```
-    g++ -c -fPIC -I"${JAVA_HOME}/include" -I"${JAVA_HOME}/include/darwin" HelloJNI.c -o HelloJNI.o
+    g++ -c -fPIC -I"${JAVA_HOME}/include" -I"${JAVA_HOME}/include/darwin" carray_CArray.cpp -o CArray.o
     ```
 
 3.  Link shared object / dynamic library
@@ -33,7 +33,7 @@
     **Linux**
 
     ```
-    g++ -shared -fPIC -o libnative.so HelloJNI.o -lc
+    g++ -shared -fPIC -o libNative.so CArray.o -lc
     ```
 
     **Windows**
