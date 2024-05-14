@@ -1,4 +1,7 @@
+JAVA Native Interface (JNI)
+
 STEPS
+
 <ol>
 <li>Create the Java file</li>
 <li>Generate Header file</li>
