@@ -9,6 +9,7 @@
 2. Compile shared object / dynamic library
 
     The C file for the header is already created. We will use this file to compile the shared object / dynamic library.
+    set JAVA_HOME
 
     **Linux**
 
@@ -28,30 +29,31 @@
     g++ -c -fPIC -I"${JAVA_HOME}/include" -I"${JAVA_HOME}/include/darwin" carray_CArray.cpp -o CArray.o
     ```
 
-3.  Link shared object / dynamic library
+4.  Link shared object / dynamic library
 
     **Linux**
 
     ```
-    g++ -shared -fPIC -o libNative.so CArray.o -lc
+    g++ -shared -fPIC -o libNativeClass.so CArray.o -lc
     ```
 
     **Windows**
 
     ```
-    g++ -shared -o native.dll HelloJNI.o -Wl,--add-stdcall-alias
+    g++ -shared -o NativeClass.dll CArray.o -Wl,--add-stdcall-alias
     ```
 
     **MacOS**
 
     ```
-    g++ -dynamiclib -o libnative.dylib HelloJNI.o -lc
+    g++ -dynamiclib -o libNativeClass.dylib CArray.o -lc
     ```
 
-4. Run the Java program. It will load the dynamic library and then execute the sayHello method.
+5. Run the Java program. It will load the dynamic library and then execute the sayHello method.
+   Hint: One should navigate outside of the folder where library is created
 
     ```
-    java -cp . -Djava.library.path=. HelloJNI
+    java -cp . -Djava.library.path=. CArray
     ```
 
 Reference : https://www.baeldung.com/jni
