@@ -9,7 +9,7 @@
 2. Compile shared object / dynamic library
 
     The C file for the header is already created. We will use this file to compile the shared object / dynamic library.
-    set JAVA_HOME
+    Set JAVA_HOME on mac: export JAVA_HOME=$(/usr/libexec/java_home)
 
     **Linux**
 
