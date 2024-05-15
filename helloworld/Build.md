@@ -6,9 +6,10 @@
     javac -h . HelloWorldJNI.java
     ```
 
-2. Compile shared object / dynamic library
+3. Compile shared object / dynamic library
 
     The C file for the header is already created. We will use this file to compile the shared object / dynamic library.
+    Set JAVA_HOME on mac: export JAVA_HOME=$(/usr/libexec/java_home)
 
     **Linux**
 
@@ -28,27 +29,27 @@
     g++ -c -fPIC -I"${JAVA_HOME}/include" -I"${JAVA_HOME}/include/darwin" helloworld_HelloWorldJNI.cpp -o HelloWorldJNI.o
     ```
 
-3.  Link shared object / dynamic library
+5.  Link shared object / dynamic library
 
     **Linux**
 
     ```
-    g++ -shared -fPIC -o libnative.so HelloJNI.o -lc
+    g++ -shared -fPIC -o libnative.so HelloWorldJNI.o -lc
     ```
 
     **Windows**
 
     ```
-    g++ -shared -o native.dll HelloJNI.o -Wl,--add-stdcall-alias
+    g++ -shared -o native.dll HelloWorldJNI.o -Wl,--add-stdcall-alias
     ```
 
     **MacOS**
 
     ```
-    g++ -dynamiclib -o libnative.dylib HelloJNI.o -lc
+    g++ -dynamiclib -o libnative.dylib HelloWorldJNI.o -lc
     ```
 
-4. Run the Java program. It will load the dynamic library and then execute the sayHello method.
+6. Run the Java program. It will load the dynamic library and then execute the sayHello method.
 
     ```
     java -cp . -Djava.library.path=. HelloWorldJNI
